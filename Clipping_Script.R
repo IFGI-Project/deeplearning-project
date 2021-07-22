@@ -16,6 +16,8 @@ Test_shp <- st_read("./Shapefiles/test/test_all.shp")
 True_shp <- subset(Training_shp, Clase=="Yes")
 False_shp <- subset(Training_shp, Clase=="No")
 
+(list.files("~/training_part1/false/"))
+
 # Importing Image
 Image2021_32bits <- stack("~/Images/Merge_2021May.tif")
 Image2017_32bits <- stack("~/Images/2017August.tif")

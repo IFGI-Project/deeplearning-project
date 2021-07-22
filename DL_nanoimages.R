@@ -194,11 +194,11 @@ dataset <- dataset_batch(dataset, 10L)
 dataset <-  dataset_map(dataset, unname)
 
 #save the model
-save_model_hdf5(first_model,filepath = "./my_first_model_2021_T3.h5")
+save_model_hdf5(first_model,filepath = "./my_first_model_2021_T3_no_rivers.h5")
 
 
 #load other model
-first_model <- load_model_hdf5("./my_first_model_2021_T3.h5")
+first_model <- load_model_hdf5("./my_first_model_2021_T3_no_rivers.h5")
 
 #Predict for the whole area
 predictions_test <- predict(first_model, dataset)
@@ -210,7 +210,7 @@ Pred_shp = st_read("./Shapefiles/test/grid_all_image.shp")
 Pred_shp_wgs84_test = st_transform(Pred_shp, crs = 4326)
 Pred_shp_wgs84_test$Prediction = predictions_test
 
-write.csv(Pred_shp_wgs84_test, "Prediction_test_all_2021_T3.csv")
+write.csv(Pred_shp_wgs84_test, "Prediction_test_all_2021_T3_no_rivers.csv")
 
 #Creation of shp with right order (in case that numbers of images are not in order)
 img_name_subset <- gsub(pattern = "\\.jpg$", "", subset_list)
@@ -237,5 +237,5 @@ leaflet() %>%
                                                opacity = 1
               )
 
-write_sf(Pred_shp_wgs84_test, "./Predictions/Final_Pred_shp_wgs84_test_2021.shp")
+write_sf(Pred_shp_wgs84_test, "./Predictions/Final_Pred_shp_wgs84_test_2021_no_rivers.shp")
 
